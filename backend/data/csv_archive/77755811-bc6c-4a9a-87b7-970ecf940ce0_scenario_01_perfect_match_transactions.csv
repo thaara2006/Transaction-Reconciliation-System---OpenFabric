@@ -1,0 +1,2 @@
+transaction_id,lifecycle_id,account_id,merchant_name,transaction_date,transaction_amount,currency,status
+TXN101,LC101,ACC101,Amazon.com,2025-08-14,100.0,USD,COMPLETED

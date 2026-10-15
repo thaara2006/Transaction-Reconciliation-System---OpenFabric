@@ -1,0 +1,2 @@
+transaction_id,lifecycle_id,account_id,merchant_name,transaction_date,transaction_amount,currency,status
+TXN102,LC102,ACC102,Starbucks,2025-08-14,100.0,USD,COMPLETED

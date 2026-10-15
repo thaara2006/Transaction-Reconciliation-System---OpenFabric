@@ -1,0 +1,256 @@
+/* =============================================================
+   TRS — Transaction detail modal styles
+   ============================================================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 38, 74, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 150;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  animation: backdropFade 0.2s ease both;
+}
+
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.detail-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(88vw, 600px);
+  height: 100%;
+  background: var(--trs-surface);
+  border-left: 1px solid var(--trs-border);
+  box-shadow: -8px 0 32px rgba(16, 38, 74, 0.12);
+  overflow: hidden;
+  animation: slideInDrawer 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideInDrawer {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Modal header ───────────────────────────────────────────── */
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 24px 18px;
+  background: var(--trs-deep-navy);
+  color: #fff;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.modal-eyebrow {
+  display: block;
+  color: rgba(255,255,255,0.5);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.modal-header h2 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  word-break: break-all;
+}
+
+.close-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--trs-radius-sm);
+  cursor: pointer;
+  transition: background var(--trs-transition);
+}
+
+.close-button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.close-button:focus-visible {
+  outline: 3px solid rgba(255,255,255,0.4);
+  outline-offset: 2px;
+}
+
+/* ── Scrollable modal body ──────────────────────────────────── */
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Status row ─────────────────────────────────────────────── */
+
+.detail-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Loading / error inline ─────────────────────────────────── */
+
+.modal-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  color: var(--trs-muted);
+  font-size: 12px;
+}
+
+/* ── Detail key-value grid ──────────────────────────────────── */
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.detail-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: #f8faff;
+  border: 1px solid var(--trs-border);
+  border-radius: var(--trs-radius-sm);
+}
+
+.detail-grid > div > span {
+  color: var(--trs-muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-grid > div > strong {
+  color: var(--trs-navy);
+  font-size: 13px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* ── Section heading ────────────────────────────────────────── */
+
+.modal-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--trs-navy);
+  font-size: 13px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--trs-border);
+}
+
+/* ── Issue callouts ─────────────────────────────────────────── */
+
+.detail-callout {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--trs-radius-sm);
+  border: 1px solid #fad6d6;
+  background: #fff5f5;
+}
+
+.detail-callout.warning {
+  border-color: #f5e0a0;
+  background: #fffae8;
+}
+
+.detail-callout > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--trs-critical);
+}
+
+.detail-callout.warning > svg {
+  color: var(--trs-warning);
+}
+
+.detail-callout > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.detail-callout strong {
+  display: block;
+  color: var(--trs-navy);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.detail-callout p {
+  color: var(--trs-text);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.detail-callout b {
+  color: var(--trs-navy);
+}
+
+.no-issues-note {
+  color: var(--trs-muted);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* ── Settlement table ───────────────────────────────────────── */
+
+.modal-settlement-wrap {
+  border: 1px solid var(--trs-border);
+  border-radius: var(--trs-radius-sm);
+  overflow: hidden;
+}
+
+/* ── Full-width footer button ───────────────────────────────── */
+
+.full-button {
+  width: 100%;
+  justify-content: center;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .detail-modal {
+    width: 100vw;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+}

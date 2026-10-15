@@ -1,0 +1,104 @@
+/* =============================================================
+   TRS — Recent imports panel (used inside Overview)
+   ============================================================= */
+
+/* The panel itself inherits .panel from App.css */
+
+.recent-imports-panel {
+  /* no extra margin needed; gap on parent handles spacing */
+}
+
+.recent-import-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+}
+
+.recent-import-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #edf1f7;
+  transition: background var(--trs-transition);
+}
+
+.recent-import-row:last-child {
+  border-bottom: 0;
+}
+
+.recent-import-row:hover {
+  background: var(--trs-hover);
+}
+
+.recent-import-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: var(--trs-radius-sm);
+}
+
+.recent-import-icon.blue {
+  color: var(--trs-blue);
+  background: #eaf1ff;
+}
+
+.recent-import-icon.orange {
+  color: var(--trs-orange-alt);
+  background: #fff4e8;
+}
+
+.recent-import-main,
+.recent-import-result {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.recent-import-main {
+  flex: 1;
+}
+
+.recent-import-main strong,
+.recent-import-result strong {
+  color: var(--trs-navy);
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.recent-import-main span,
+.recent-import-main small,
+.recent-import-result span {
+  color: var(--trs-muted);
+  font-size: 10.5px;
+}
+
+.recent-import-result {
+  align-items: flex-end;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Overview empty state */
+.overview-empty-state {
+  padding: 32px 16px;
+  color: var(--trs-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .recent-import-row {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .recent-import-result {
+    max-width: 110px;
+  }
+}

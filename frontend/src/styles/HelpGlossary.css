@@ -1,0 +1,185 @@
+
+/* ========================================
+   TRS TOPBAR HELP BUTTON
+   ======================================== */
+
+.floating-help {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.floating-help-button {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border: 1px solid #f28c28;
+  border-radius: 10px;
+
+  background: #fff7ed;
+  color: #e87918;
+
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(16, 45, 80, 0.08);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.floating-help-button:hover {
+  background: #f28c28;
+  border-color: #f28c28;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.floating-help-button:focus-visible,
+.floating-help-close:focus-visible {
+  outline: 3px solid #2868a8;
+  outline-offset: 3px;
+}
+
+/* ========================================
+   HELP POPUP
+   ======================================== */
+
+.floating-help-popup {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 370px;
+  max-width: calc(100vw - 32px);
+  max-height: min(560px, calc(100vh - 110px));
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: #ffffff;
+  color: #16385d;
+
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 36px rgba(16, 45, 80, 0.18);
+
+  animation: help-popup-appear 0.18s ease-out;
+}
+
+@keyframes help-popup-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Popup header */
+
+.floating-help-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 17px;
+
+  background: #102d50;
+  color: #ffffff;
+}
+
+.floating-help-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.floating-help-header p {
+  margin: 5px 0 0;
+  color: #c4d5e8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.floating-help-close {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+.floating-help-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Scrollable glossary content */
+
+.floating-help-content {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px;
+
+  background: #ffffff;
+  color: #16385d;
+}
+
+.floating-help-content .help-glossary {
+  margin: 0;
+  box-shadow: none;
+}
+
+/* Make existing glossary terms visible inside the popup.
+   Retain the component's existing term/grid styling. */
+
+.floating-help-content .help-glossary-content {
+  display: block;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+  .floating-help-popup {
+    position: fixed;
+    top: 78px;
+    right: 12px;
+
+    width: min(370px, calc(100vw - 24px));
+    max-height: calc(100vh - 96px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-help-popup {
+    animation: none;
+  }
+
+  .floating-help-button {
+    transition: none;
+  }
+}
